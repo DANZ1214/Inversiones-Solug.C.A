@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>InversionesSolug C.A</title>
+  <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+  <header class="header-top">
+    <div class="header-container">
+      <div class="logo">
+        <img src="./img/WhatsApp Image 2025-07-04 at 4.20.48 PM-Photoroom (1) (1) (1) (1).png" alt="InversionesSolug">
+      </div>
+      <div class="header-right">
+        <div class="contact-info">
+          <a href="./html/login.html">
+            <img src="./img/pngwing.com.png" alt="Login">
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="nav-bar">
+    <div class="nav-container">
+      <div class="nav-items">
+        <a href="#inicio">INICIO</a>
+        <a href="#quienes-somos">QUIENES SOMOS</a>
+        <a href="#que-hacemos">QUE HACEMOS</a>
+        <a href="#contacto">CONTACTO</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="carousel">
+    <div class="carousel-container">
+      <button id="prev-btn"></button>
+      <div class="slides">
+        <div class="slide active">
+          <div class="slide-image">
+            <img src="https://placehold.co/1920x600/e74c3c/ffffff?text=Mejora+tu+producción" alt="Slide 3">
+          </div>
+          <div class="slide-content">
+            <h1>Mejora tu producción con nosotros</h1>
+          </div>
+        </div>
+        <div class="slide">
+          <div class="slide-image">
+            <img src="https://placehold.co/1920x600/3498db/ffffff?text=Soluciones+agrícolas+innovadoras" alt="Slide 1">
+          </div>
+          <div class="slide-content">
+            <h1>Productos para el crecimiento eficiente de tus plantas!</h1>
+          </div>
+        </div>
+        <div class="slide">
+          <div class="slide-image">
+            <img src="https://placehold.co/1920x600/2ecc71/ffffff?text=Nutrición+Animal+Premium" alt="Slide 2">
+          </div>
+          <div class="slide-content">
+            <h1>Soluciones agrícolas innovadoras</h1>
+          </div>
+        </div>
+      </div>
+      <button id="next-btn"></button>
+    </div>
+  </section>
+
+  <section id="inicio" class="content-section">
+    <h2>Inicio</h2>
+    <p>Bienvenidos a InversionesSolug C.A., donde la calidad y la innovación son nuestra prioridad. Con el respaldo de un inversor alemán, estamos comprometidos a ofrecerte productos de primera línea para el cuidado de tu hato ganadero y cultivos agrícolas. ¡Descubre cómo podemos ayudarte a alcanzar nuevos niveles de éxito!</p>
+  </section>
+
+  <section id="quienes-somos" class="content-section">
+    <h2>Quienes Somos</h2>
+    <p>InversionesSolug C.A. fue fundada con la visión de transformar el sector agrícola y ganadero mediante la implementación de soluciones innovadoras y de alta calidad. Iniciamos nuestro camino con la valiosa colaboración de un inversor alemán, quien ha contribuido significativamente al desarrollo de nuestra empresa. Nuestro equipo está compuesto por expertos en nutrición animal y agricultura, quienes trabajan incansablemente para ofrecerte productos confiables y eficaces.</p>
+  </section>
+
+  <section id="que-hacemos" class="content-section">
+    <h2>Que Hacemos</h2>
+    <p>En InversionesSolug C.A., nos dedicamos a proporcionar soluciones completas para el cuidado y desarrollo de tu negocio agrícola y ganadero. Ofrecemos una amplia gama de productos, incluyendo:</p>
+    <p>• Nutricionales Avanzadas para Ganado: Fórmulas específicas para cada etapa del crecimiento y producción animal.</p>
+    <p>• Fertilizantes y Abonos: Productos de alta calidad para mejorar la fertilidad del suelo y aumentar la productividad de tus cultivos.</p>
+    <p>• Soluciones Integrales: Asesoría técnica y recomendaciones personalizadas para optimizar tus operaciones agrícolas y ganaderas.</p>
+  </section>
+
+  <section id="contacto" class="content-section">
+    <h2>Contacto</h2>
+    <p>¿Tienes preguntas sobre nuestros productos o servicios? Estamos aquí para ayudarte.</p>
+    <p>Nuestro equipo de atención al cliente está disponible para brindarte asesoramiento personalizado y ayudarte a encontrar las soluciones que mejor se adapten a tus necesidades específicas.</p>
+    <p>Contáctanos y descubre cómo podemos contribuir al éxito de tu producción agrícola con nuestras soluciones innovadoras y nuestro compromiso con la excelencia.</p>
+    <p><strong>Teléfono:</strong> +504 <br>
+    <strong>Email:</strong> info@inversionessolug.com<br>
+    <strong>Dirección:</strong> Comayagua Honduras CA. 
+Oficina principal, Residencial Monte Verde Bloque G2 casa #12</p>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="#" class="icon-link"><img src="https://e7.pngegg.com/pngimages/991/568/png-clipart-facebook-logo-computer-icons-facebook-logo-facebook-thumbnail.png" alt="Facebook"></a>
+      <a href="#" class="icon-link"><img src="https://img.freepik.com/premium-vector/instagram-vector-logo-icon-social-media-logotype_901408-392.jpg?semt=ais_hybrid&w=740" alt="Instagram"></a>
+      <a href="#" class="icon-link"><img src="https://png.pngtree.com/element_our/sm/20180626/sm_5b321c98efaa6.jpg" alt="WhatsApp"></a>
+    </div>
+    <p class="copyright">&copy; 2025 InversionesSolug C.A. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    // Carousel functionality
+    const slides = document.querySelectorAll('.slide');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    let currentSlide = 0;
+    let autoSlideInterval;
+
+    function showSlide(index) {
+      slides.forEach(slide => slide.classList.remove('active'));
+      slides[index].classList.add('active');
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }
+
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+      showSlide(currentSlide);
+    }
+
+    function startAutoSlide() {
+      autoSlideInterval = setInterval(nextSlide, 5000);
+    }
+
+    function stopAutoSlide() {
+      clearInterval(autoSlideInterval);
+    }
+
+    nextBtn.addEventListener('click', () => {
+      nextSlide();
+      stopAutoSlide();
+      startAutoSlide();
+    });
+
+    prevBtn.addEventListener('click', () => {
+      prevSlide();
+      stopAutoSlide();
+      startAutoSlide();
+    });
+
+    const carousel = document.querySelector('.carousel');
+    carousel.addEventListener('mouseenter', stopAutoSlide);
+    carousel.addEventListener('mouseleave', startAutoSlide);
+
+    startAutoSlide();
+
+    // Active navigation link
+    const navLinks = document.querySelectorAll('.nav-items a');
+    const sections = document.querySelectorAll('.content-section');
+
+    function setActiveNavLink() {
+      let currentSection = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 150;
+        const sectionHeight = section.clientHeight;
+        if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+          currentSection = section.getAttribute('id');
+        }
+      });
+      
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${currentSection}`) {
+          link.classList.add('active');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', setActiveNavLink);
+    setActiveNavLink();
+  </script>
+</body>
+</html>

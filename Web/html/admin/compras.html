@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>InversionesSolug C.A</title>
+    <link rel="stylesheet" href="../../css/trab.css">
+</head>
+<body>
+    <header class="header-top">
+        <div class="header-container">
+            <div class="logo">
+                <img src="../../img/WhatsApp Image 2025-07-04 at 4.20.48 PM-Photoroom (1) (1) (1) (1).png" alt="InversionesSolug">
+            </div>
+            
+        </div>
+    </header>
+
+    <nav class="nav-bar">
+        <div class="nav-container">
+            <div class="nav-items">
+                <a href="./admin/ventas.html">VENTAS</a>
+                <a href="./trab.html">COMPRAS</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <section class="purchase-page-header">
+            <div class="purchase-header-container">
+                <h2>INGRESE EL PRODUCTO</h2>
+                <p>En el módulo COMPRAS usted podrá registrar compras de productos ya sea nuevos o ya registrados en sistema. También puede ver la lista de todas las compras realizadas, buscar compras y ver información más detallada de cada compra.</p>
+            </div>
+        </section>
+
+        <section class="purchase-form-section">
+            <div class="purchase-form-container">
+                <div class="tab-buttons">
+                    <button class="tab-button active">
+                        <img src="https://www.svgrepo.com/show/365922/new-product.svg" alt="Nueva Compra" class="icon-tab">
+                        NUEVA COMPRA
+                    </button>
+                    <button class="tab-button">
+                        <img src="https://www.svgrepo.com/show/511677/purchases.svg" alt="Compras Realizadas" class="icon-tab">
+                        COMPRAS REALIZADAS
+                    </button>
+                    <button class="tab-button">
+                        <img src="https://www.svgrepo.com/show/523899/search.svg" alt="Buscar Compra" class="icon-tab">
+                        BUSCAR COMPRA
+                    </button>
+                </div>
+
+                <div class="form-and-details-grid">
+                    <div class="form-column">
+                        <div class="input-section">
+                            <p class="input-label">Ingrese el código de barras del producto y luego haga clic en "Verificar producto" para cargar los datos en caso el producto ya este registrado, en caso contrario se cargará el formulario para registrar un nuevo producto.</p>
+                            <div class="input-field-group">
+                                <label for="barcode-input">Código de barras</label>
+                                <input type="text" id="barcode-input" placeholder=" ">
+                                <button class="verify-button">
+                                    <img src="https://www.svgrepo.com/show/529712/check-circle.svg" alt="Verificar" class="icon-verify">
+                                    VERIFICAR PRODUCTO
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="products-table">
+                            <div class="table-header">
+                                <div class="col">#</div>
+                                <div class="col">Código de barra</div>
+                                <div class="col">Producto</div>
+                                <div class="col">Cantidad</div>
+                                <div class="col">Precio</div>
+                                <div class="col">Subtotal</div>
+                                <div class="col">Remover</div>
+                            </div>
+                            <div class="table-body">
+                                <p class="no-products-message">No hay productos agregados</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="details-column">
+                        <h3>DATOS DE LA COMPRA</h3>
+                        <div class="purchase-info">
+                            <div class="info-row">
+                                <label for="purchase-date">Fecha</label>
+                                <input type="date" id="purchase-date" value="2025-08-25">
+                                <span class="icon-calendar">🗓️</span>
+                            </div>
+                            <div class="info-row">
+                                <label for="provider-select">Proveedor</label>
+                                <select id="provider-select">
+                                    <option value="" disabled selected>Seleccione una opción</option>
+                                    <option value="provider1">Proveedor 1</option>
+                                    <option value="provider2">Proveedor 2</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="summary-details">
+                            <div class="summary-row">
+                                <span>Subtotal</span>
+                                <span>$0.00 USD</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>IVA (15%)</span>
+                                <span>$0.00 USD</span>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="summary-total">
+                            <span>Total</span>
+                            <span>$0.00 USD</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+   
+</body>
+</html>

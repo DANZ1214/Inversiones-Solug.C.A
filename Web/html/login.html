@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - InversionesSolug C.A.</title>
+    <link rel="stylesheet" href="../css/login.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="../img/WhatsApp Image 2025-07-04 at 4.20.48 PM-Photoroom (1) (1) (1) (1).png" alt="InversionesSolug C.A.">
+            <span class="logo-text">InversionesSolug C.A.</span>
+        </div>
+        <div class="contact-info">
+            <a href="../index.html"><img src="../img/png-transparent-house-computer-icons-green-home-home-renovation-angle-building-text-thumbnail-Photoroom.png" alt="Inicio"></a>
+        </div>
+    </header>
+
+    <main>
+        <div class="login-container">
+            <h1>Bienvenido</h1>
+            <h2>Ingresa a tu Usuario</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <input type="text" id="username" name="username" placeholder="Usuario" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="password" name="password" placeholder="Contraseña" required>
+                </div>
+                <button type="submit" class="submit-btn">Ingresar</button>
+                <a href="./registro.html" class="submit-btn1">Registrarse</a>
+                <div id="errorMessage" class="error-message"></div>
+            </form>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p class="copyright">&copy; 2025 InversionesSolug C.A. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        // Base de datos simulada de usuarios (en producción, esto vendría del servidor)
+        const usuarios = {
+            'admin': { password: 'admin123', rol: 'admin' },
+            'usuario': { password: 'user123', rol: 'usuario' },
+            'trabajador': { password: 'trab123', rol: 'trabajador' }
+        };
+
+        // Mapeo de roles a rutas
+        const rutasPorRol = {
+            'admin': './admin.html',     // Ajusta la ruta según tu estructura
+            'usuario': './user.html',
+            'trabajador': './trab.html'
+        };
+
+        // Función para mostrar mensaje de error
+        function mostrarError(mensaje) {
+            const errorDiv = document.getElementById('errorMessage');
+            errorDiv.textContent = mensaje;
+            errorDiv.style.display = 'block';
+
+            setTimeout(() => {
+                errorDiv.style.display = 'none';
+            }, 5000);
+        }
+
+        // Manejar el envío del formulario
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Evita el envío por defecto
+
+            const username = document.getElementById('username').value.trim().toLowerCase();
+            const password = document.getElementById('password').value;
+
+            // Validar campos vacíos
+            if (!username || !password) {
+                mostrarError('Por favor, completa todos los campos.');
+                return;
+            }
+
+            // Verificar si el usuario existe y la contraseña es correcta
+            if (usuarios[username]) {
+                if (usuarios[username].password === password) {
+                    const rol = usuarios[username].rol;
+                    const ruta = rutasPorRol[rol];
+
+                    if (ruta) {
+                        // Redirigir según el rol
+                        window.location.href = ruta;
+                    } else {
+                        mostrarError('Rol no tiene una página asignada.');
+                    }
+                } else {
+                    mostrarError('Contraseña incorrecta.');
+                }
+            } else {
+                mostrarError('Usuario no encontrado.');
+            }
+
+            // Limpiar contraseña tras error
+            document.getElementById('password').value = '';
+        });
+
+        // Limpiar mensaje de error al escribir
+        document.getElementById('username').addEventListener('input', function() {
+            document.getElementById('errorMessage').style.display = 'none';
+        });
+
+        document.getElementById('password').addEventListener('input', function() {
+            document.getElementById('errorMessage').style.display = 'none';
+        });
+    </script>
+</body>
+</html>

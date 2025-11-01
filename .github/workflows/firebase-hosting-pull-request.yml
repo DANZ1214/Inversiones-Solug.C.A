@@ -13,8 +13,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+
+      - name: 🔍 Listar archivos (para depurar)
+        run: ls -R
+      
       - run: npm ci && npm run build
-        working-directory: Web/invbuenosaires
+        working-directory: Web/invbuenosaires # <-- Dejamos esta línea, aunque sabemos que fallará
+      
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}

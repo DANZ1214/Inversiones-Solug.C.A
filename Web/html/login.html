@@ -40,18 +40,14 @@
     </footer>
 
     <script>
-        // Base de datos simulada de usuarios (en producción, esto vendría del servidor)
-        const usuarios = {
-            'admin': { password: 'admin123', rol: 'admin' },
-            'usuario': { password: 'user123', rol: 'usuario' },
-            'trabajador': { password: 'trab123', rol: 'trabajador' }
-        };
+        // Configura la URL de tu API (ajusta si tu ruta es distinta)
+        const API_URL = 'http://localhost:3008/api/login';
 
-        // Mapeo de roles a rutas
+        // Mapeo de roles numéricos a rutas (1=admin, 2=trab, 3=user)
         const rutasPorRol = {
-            'admin': './admin.html',     // Ajusta la ruta según tu estructura
-            'usuario': './user.html',
-            'trabajador': './trab.html'
+            1: './admin.html',
+            2: './trab.html',
+            3: './user.html'
         };
 
         // Función para mostrar mensaje de error
@@ -66,39 +62,61 @@
         }
 
         // Manejar el envío del formulario
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault(); // Evita el envío por defecto
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
 
-            const username = document.getElementById('username').value.trim().toLowerCase();
+            const username = document.getElementById('us ername').value.trim();
             const password = document.getElementById('password').value;
 
-            // Validar campos vacíos
             if (!username || !password) {
                 mostrarError('Por favor, completa todos los campos.');
                 return;
             }
 
-            // Verificar si el usuario existe y la contraseña es correcta
-            if (usuarios[username]) {
-                if (usuarios[username].password === password) {
-                    const rol = usuarios[username].rol;
-                    const ruta = rutasPorRol[rol];
-
-                    if (ruta) {
-                        // Redirigir según el rol
-                        window.location.href = ruta;
-                    } else {
-                        mostrarError('Rol no tiene una página asignada.');
-                    }
-                } else {
-                    mostrarError('Contraseña incorrecta.');
+            try {
+                const res = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    // enviar campos que acepta el backend: userId y pass
+                    body: JSON.stringify({ userId: username, pass: password })
+                });
+                
+                if (!res.ok) {
+                    // Si la API devuelve 4xx/5xx, intentar leer mensaje de error
+                    const errBody = await res.json().catch(() => ({}));
+                    const msg = errBody.message || 'Error del servidor al autenticar.';
+                    mostrarError(msg);
+                    document.getElementById('password').value = '';
+                    return;
                 }
-            } else {
-                mostrarError('Usuario no encontrado.');
-            }
 
-            // Limpiar contraseña tras error
-            document.getElementById('password').value = '';
+                const body = await res.json();
+
+                // Se espera que la API retorne algo como: { success: true, role: 1 } o { success: false, message: '...' }
+                if (!body || !body.success) {
+                    mostrarError(body && body.message ? body.message : 'Credenciales incorrectas.');
+                    document.getElementById('password').value = '';
+                    return;
+                }
+
+                const rol = Number(body.role);
+                const ruta = rutasPorRol[rol];
+
+                if (ruta) {
+                    // Redirigir según rol
+                    window.location.href = ruta;
+                } else {
+                    mostrarError('Rol no tiene una página asignada.');
+                }
+            } catch (error) {
+                console.error('Error al conectar con la API:', error);
+                mostrarError('No se pudo conectar con el servidor. Verifica que la API esté en ejecución.');
+            } finally {
+                // Limpiar campo contraseña por seguridad
+                document.getElementById('password').value = '';
+            }
         });
 
         // Limpiar mensaje de error al escribir
